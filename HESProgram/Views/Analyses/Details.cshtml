@@ -1,0 +1,122 @@
+﻿@model HESProgram.Models.Analysis
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Analysis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AirContaminant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirContaminant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attachment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Method)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CeilingLimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CeilingLimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActionLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TLV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TLV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TLVC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TLVC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TLVST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TLVST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RELC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RELC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RELST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RELST)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AnalysisId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<HESProgram.Models.Analysis>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AirContaminant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attachment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Method)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STEL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CeilingLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TLV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TLVC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TLVST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RELC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RELST)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirContaminant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attachment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Method)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CeilingLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TLV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TLVC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TLVST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RELC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RELST)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AnalysisId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AnalysisId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnalysisId })
+        </td>
+    </tr>
+}
+
+</table>

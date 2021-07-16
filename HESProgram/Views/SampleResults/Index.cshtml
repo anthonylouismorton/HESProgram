@@ -1,0 +1,75 @@
+﻿@model IEnumerable<HESProgram.Models.SampleResult>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sample)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SampleWithAir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTWA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BriefAndScala)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoursWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Analysis.AirContaminant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sample1.FieldNotes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sample)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SampleWithAir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeTWA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BriefAndScala)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoursWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Analysis.AirContaminant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sample1.FieldNotes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SampleResults }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SampleResults }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SampleResults })
+        </td>
+    </tr>
+}
+
+</table>

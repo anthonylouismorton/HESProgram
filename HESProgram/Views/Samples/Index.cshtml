@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HESProgram.Models.Sample>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Samples</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LPM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldSampleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NotificationLetter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.employeeFullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MineTask.taskDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldSampleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NotificationLetter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MineTask.taskDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SampleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SampleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SampleId })
+        </td>
+    </tr>
+}
+
+</table>

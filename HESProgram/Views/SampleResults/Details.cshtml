@@ -1,0 +1,82 @@
+﻿@model HESProgram.Models.SampleResult
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SampleResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sample)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sample)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SampleWithAir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleWithAir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeTWA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeTWA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BriefAndScala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BriefAndScala)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoursWorked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoursWorked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Analysis.AirContaminant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Analysis.AirContaminant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sample1.FieldNotes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sample1.FieldNotes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SampleResults }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

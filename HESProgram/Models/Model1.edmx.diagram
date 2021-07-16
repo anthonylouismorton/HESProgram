@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="96c0a8219add4503816d56a3eafb3869" Name="Diagram1">
+        <EntityTypeShape EntityType="IHModel.Analysis" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="IHModel.Employee" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="IHModel.LabReport" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="IHModel.MineTask" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IHModel.Weather" Width="1.5" PointX="5.75" PointY="8.5" />
+        <AssociationConnector Association="IHModel.FK__LabReport__Analy__48CFD27E" />
+        <EntityTypeShape EntityType="IHModel.Sample" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="IHModel.FK__Sample__Employee__03F0984C" />
+        <AssociationConnector Association="IHModel.FK__Sample__taskId__04E4BC85" />
+        <EntityTypeShape EntityType="IHModel.addAnalysi" Width="1.5" PointX="8.25" PointY="5.375" />
+        <AssociationConnector Association="IHModel.FK__addAnalys__Analy__0C85DE4D" />
+        <AssociationConnector Association="IHModel.FK__addAnalys__Sampl__0A9D95DB" />
+        <EntityTypeShape EntityType="IHModel.SampleResult" Width="1.5" PointX="5.25" PointY="3.625" />
+        <AssociationConnector Association="IHModel.FK__SampleRes__Analy__0D7A0286" />
+        <AssociationConnector Association="IHModel.FK__SampleRes__Emplo__0E6E26BF" />
+        <AssociationConnector Association="IHModel.FK__SampleRes__Sampl__10566F31" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

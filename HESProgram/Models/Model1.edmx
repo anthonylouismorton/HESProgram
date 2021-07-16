@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="addAnalysis">
+          <Key>
+            <PropertyRef Name="addAnalysisId" />
+          </Key>
+          <Property Name="addAnalysisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SampleId" Type="int" Nullable="false" />
+          <Property Name="AnalysisId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Analysis">
+          <Key>
+            <PropertyRef Name="AnalysisId" />
+          </Key>
+          <Property Name="AnalysisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AirContaminant" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Attachment" Type="varchar" MaxLength="1000" />
+          <Property Name="Method" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PEL" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="STEL" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="CeilingLimit" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="ActionLevel" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="REL" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="TLV" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="TLVC" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="TLVST" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="RELC" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="RELST" Type="decimal" Precision="12" Scale="10" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LabReport">
+          <Key>
+            <PropertyRef Name="LabReportId" />
+          </Key>
+          <Property Name="LabReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReportNumber" Type="int" Nullable="false" />
+          <Property Name="ReportDate" Type="date" Nullable="false" />
+          <Property Name="ReportAttachment" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="sampleId" Type="int" />
+          <Property Name="AnalysisId" Type="int" />
+        </EntityType>
+        <EntityType Name="MineTask">
+          <Key>
+            <PropertyRef Name="taskId" />
+          </Key>
+          <Property Name="taskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taskDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Respirator" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MedicalMonitoring" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="SampleId" />
+          </Key>
+          <Property Name="SampleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="LPM" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="FieldNotes" Type="nvarchar(max)" />
+          <Property Name="FieldSampleId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NotificationLetter" Type="nvarchar" MaxLength="3" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="taskId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SampleResults">
+          <Key>
+            <PropertyRef Name="SampleResults" />
+          </Key>
+          <Property Name="SampleResults" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sample" Type="decimal" Precision="12" Scale="10" Nullable="false" />
+          <Property Name="SampleWithAir" Type="decimal" Precision="12" Scale="10" Nullable="false" />
+          <Property Name="EmployeeTWA" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="BriefAndScala" Type="decimal" Precision="12" Scale="10" />
+          <Property Name="HoursWorked" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="AnalysisId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="SampleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weather">
+          <Key>
+            <PropertyRef Name="WeatherId" />
+          </Key>
+          <Property Name="WeatherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeatherDate" Type="date" Nullable="false" />
+          <Property Name="Wind" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WindDirection" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Temperature" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Humidity" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Precipitation" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="WeatherType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__addAnalys__Analy__0C85DE4D">
+          <End Role="Analysis" Type="Self.Analysis" Multiplicity="1" />
+          <End Role="addAnalysis" Type="Self.addAnalysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="addAnalysis">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__addAnalys__Sampl__0A9D95DB">
+          <End Role="Sample" Type="Self.Sample" Multiplicity="1" />
+          <End Role="addAnalysis" Type="Self.addAnalysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sample">
+              <PropertyRef Name="SampleId" />
+            </Principal>
+            <Dependent Role="addAnalysis">
+              <PropertyRef Name="SampleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LabReport__Analy__48CFD27E">
+          <End Role="Analysis" Type="Self.Analysis" Multiplicity="0..1" />
+          <End Role="LabReport" Type="Self.LabReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="LabReport">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sample__Employee__03F0984C">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Sample" Type="Self.Sample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Sample">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sample__taskId__04E4BC85">
+          <End Role="MineTask" Type="Self.MineTask" Multiplicity="1" />
+          <End Role="Sample" Type="Self.Sample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MineTask">
+              <PropertyRef Name="taskId" />
+            </Principal>
+            <Dependent Role="Sample">
+              <PropertyRef Name="taskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SampleRes__Analy__0D7A0286">
+          <End Role="Analysis" Type="Self.Analysis" Multiplicity="1" />
+          <End Role="SampleResults" Type="Self.SampleResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="SampleResults">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SampleRes__Emplo__0E6E26BF">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="SampleResults" Type="Self.SampleResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SampleResults">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SampleRes__Sampl__10566F31">
+          <End Role="Sample" Type="Self.Sample" Multiplicity="1" />
+          <End Role="SampleResults" Type="Self.SampleResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sample">
+              <PropertyRef Name="SampleId" />
+            </Principal>
+            <Dependent Role="SampleResults">
+              <PropertyRef Name="SampleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IHModelStoreContainer">
+          <EntitySet Name="addAnalysis" EntityType="Self.addAnalysis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Analysis" EntityType="Self.Analysis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LabReport" EntityType="Self.LabReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MineTask" EntityType="Self.MineTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sample" EntityType="Self.Sample" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SampleResults" EntityType="Self.SampleResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Weather" EntityType="Self.Weather" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__addAnalys__Analy__0C85DE4D" Association="Self.FK__addAnalys__Analy__0C85DE4D">
+            <End Role="Analysis" EntitySet="Analysis" />
+            <End Role="addAnalysis" EntitySet="addAnalysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__addAnalys__Sampl__0A9D95DB" Association="Self.FK__addAnalys__Sampl__0A9D95DB">
+            <End Role="Sample" EntitySet="Sample" />
+            <End Role="addAnalysis" EntitySet="addAnalysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LabReport__Analy__48CFD27E" Association="Self.FK__LabReport__Analy__48CFD27E">
+            <End Role="Analysis" EntitySet="Analysis" />
+            <End Role="LabReport" EntitySet="LabReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sample__Employee__03F0984C" Association="Self.FK__Sample__Employee__03F0984C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Sample" EntitySet="Sample" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sample__taskId__04E4BC85" Association="Self.FK__Sample__taskId__04E4BC85">
+            <End Role="MineTask" EntitySet="MineTask" />
+            <End Role="Sample" EntitySet="Sample" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SampleRes__Analy__0D7A0286" Association="Self.FK__SampleRes__Analy__0D7A0286">
+            <End Role="Analysis" EntitySet="Analysis" />
+            <End Role="SampleResults" EntitySet="SampleResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SampleRes__Emplo__0E6E26BF" Association="Self.FK__SampleRes__Emplo__0E6E26BF">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="SampleResults" EntitySet="SampleResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SampleRes__Sampl__10566F31" Association="Self.FK__SampleRes__Sampl__10566F31">
+            <End Role="Sample" EntitySet="Sample" />
+            <End Role="SampleResults" EntitySet="SampleResults" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IHEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Analyses" EntityType="IHModel.Analysis" />
+          <EntitySet Name="Employees" EntityType="IHModel.Employee" />
+          <EntitySet Name="LabReports" EntityType="IHModel.LabReport" />
+          <EntitySet Name="MineTasks" EntityType="IHModel.MineTask" />
+          <EntitySet Name="Weathers" EntityType="IHModel.Weather" />
+          <AssociationSet Name="FK__LabReport__Analy__48CFD27E" Association="IHModel.FK__LabReport__Analy__48CFD27E">
+            <End Role="Analysis" EntitySet="Analyses" />
+            <End Role="LabReport" EntitySet="LabReports" />
+          </AssociationSet>
+          <EntitySet Name="Samples" EntityType="IHModel.Sample" />
+          <AssociationSet Name="FK__Sample__Employee__03F0984C" Association="IHModel.FK__Sample__Employee__03F0984C">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Sample" EntitySet="Samples" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sample__taskId__04E4BC85" Association="IHModel.FK__Sample__taskId__04E4BC85">
+            <End Role="MineTask" EntitySet="MineTasks" />
+            <End Role="Sample" EntitySet="Samples" />
+          </AssociationSet>
+          <EntitySet Name="addAnalysis" EntityType="IHModel.addAnalysi" />
+          <AssociationSet Name="FK__addAnalys__Analy__0C85DE4D" Association="IHModel.FK__addAnalys__Analy__0C85DE4D">
+            <End Role="Analysis" EntitySet="Analyses" />
+            <End Role="addAnalysi" EntitySet="addAnalysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__addAnalys__Sampl__0A9D95DB" Association="IHModel.FK__addAnalys__Sampl__0A9D95DB">
+            <End Role="Sample" EntitySet="Samples" />
+            <End Role="addAnalysi" EntitySet="addAnalysis" />
+          </AssociationSet>
+          <EntitySet Name="SampleResults" EntityType="IHModel.SampleResult" />
+          <AssociationSet Name="FK__SampleRes__Analy__0D7A0286" Association="IHModel.FK__SampleRes__Analy__0D7A0286">
+            <End Role="Analysis" EntitySet="Analyses" />
+            <End Role="SampleResult" EntitySet="SampleResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SampleRes__Emplo__0E6E26BF" Association="IHModel.FK__SampleRes__Emplo__0E6E26BF">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SampleResult" EntitySet="SampleResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SampleRes__Sampl__10566F31" Association="IHModel.FK__SampleRes__Sampl__10566F31">
+            <End Role="Sample" EntitySet="Samples" />
+            <End Role="SampleResult" EntitySet="SampleResults" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Analysis">
+          <Key>
+            <PropertyRef Name="AnalysisId" />
+          </Key>
+          <Property Name="AnalysisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AirContaminant" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Method" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PEL" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="STEL" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="CeilingLimit" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="ActionLevel" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="REL" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="TLV" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="TLVC" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="TLVST" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="RELC" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="RELST" Type="Decimal" Precision="12" Scale="10" />
+          <NavigationProperty Name="LabReports" Relationship="IHModel.FK__LabReport__Analy__48CFD27E" FromRole="Analysis" ToRole="LabReport" />
+          <NavigationProperty Name="addAnalysis" Relationship="IHModel.FK__addAnalys__Analy__0C85DE4D" FromRole="Analysis" ToRole="addAnalysi" />
+          <NavigationProperty Name="SampleResults" Relationship="IHModel.FK__SampleRes__Analy__0D7A0286" FromRole="Analysis" ToRole="SampleResult" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNumber" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Samples" Relationship="IHModel.FK__Sample__Employee__03F0984C" FromRole="Employee" ToRole="Sample" />
+          <NavigationProperty Name="SampleResults" Relationship="IHModel.FK__SampleRes__Emplo__0E6E26BF" FromRole="Employee" ToRole="SampleResult" />
+        </EntityType>
+        <EntityType Name="LabReport">
+          <Key>
+            <PropertyRef Name="LabReportId" />
+          </Key>
+          <Property Name="LabReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReportNumber" Type="Int32" Nullable="false" />
+          <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReportAttachment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="sampleId" Type="Int32" />
+          <Property Name="AnalysisId" Type="Int32" />
+          <NavigationProperty Name="Analysis" Relationship="IHModel.FK__LabReport__Analy__48CFD27E" FromRole="LabReport" ToRole="Analysis" />
+        </EntityType>
+        <EntityType Name="MineTask">
+          <Key>
+            <PropertyRef Name="taskId" />
+          </Key>
+          <Property Name="taskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taskDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Respirator" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalMonitoring" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Samples" Relationship="IHModel.FK__Sample__taskId__04E4BC85" FromRole="MineTask" ToRole="Sample" />
+        </EntityType>
+        <EntityType Name="Weather">
+          <Key>
+            <PropertyRef Name="WeatherId" />
+          </Key>
+          <Property Name="WeatherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeatherDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Wind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WindDirection" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Temperature" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Humidity" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+          <Property Name="Precipitation" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+          <Property Name="WeatherType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__LabReport__Analy__48CFD27E">
+          <End Type="IHModel.Analysis" Role="Analysis" Multiplicity="0..1" />
+          <End Type="IHModel.LabReport" Role="LabReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="LabReport">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="SampleId" />
+          </Key>
+          <Property Name="SampleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LPM" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <Property Name="FieldNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FieldSampleId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NotificationLetter" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="taskId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="IHModel.FK__Sample__Employee__03F0984C" FromRole="Sample" ToRole="Employee" />
+          <NavigationProperty Name="MineTask" Relationship="IHModel.FK__Sample__taskId__04E4BC85" FromRole="Sample" ToRole="MineTask" />
+          <NavigationProperty Name="addAnalysis" Relationship="IHModel.FK__addAnalys__Sampl__0A9D95DB" FromRole="Sample" ToRole="addAnalysi" />
+          <NavigationProperty Name="SampleResults" Relationship="IHModel.FK__SampleRes__Sampl__10566F31" FromRole="Sample" ToRole="SampleResult" />
+        </EntityType>
+        <Association Name="FK__Sample__Employee__03F0984C">
+          <End Type="IHModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="IHModel.Sample" Role="Sample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Sample">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sample__taskId__04E4BC85">
+          <End Type="IHModel.MineTask" Role="MineTask" Multiplicity="1" />
+          <End Type="IHModel.Sample" Role="Sample" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MineTask">
+              <PropertyRef Name="taskId" />
+            </Principal>
+            <Dependent Role="Sample">
+              <PropertyRef Name="taskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="addAnalysi">
+          <Key>
+            <PropertyRef Name="addAnalysisId" />
+          </Key>
+          <Property Name="addAnalysisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SampleId" Type="Int32" Nullable="false" />
+          <Property Name="AnalysisId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Analysis" Relationship="IHModel.FK__addAnalys__Analy__0C85DE4D" FromRole="addAnalysi" ToRole="Analysis" />
+          <NavigationProperty Name="Sample" Relationship="IHModel.FK__addAnalys__Sampl__0A9D95DB" FromRole="addAnalysi" ToRole="Sample" />
+        </EntityType>
+        <Association Name="FK__addAnalys__Analy__0C85DE4D">
+          <End Type="IHModel.Analysis" Role="Analysis" Multiplicity="1" />
+          <End Type="IHModel.addAnalysi" Role="addAnalysi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="addAnalysi">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__addAnalys__Sampl__0A9D95DB">
+          <End Type="IHModel.Sample" Role="Sample" Multiplicity="1" />
+          <End Type="IHModel.addAnalysi" Role="addAnalysi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sample">
+              <PropertyRef Name="SampleId" />
+            </Principal>
+            <Dependent Role="addAnalysi">
+              <PropertyRef Name="SampleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SampleResult">
+          <Key>
+            <PropertyRef Name="SampleResults" />
+          </Key>
+          <Property Name="SampleResults" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sample" Type="Decimal" Nullable="false" Precision="12" Scale="10" />
+          <Property Name="SampleWithAir" Type="Decimal" Nullable="false" Precision="12" Scale="10" />
+          <Property Name="EmployeeTWA" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="BriefAndScala" Type="Decimal" Precision="12" Scale="10" />
+          <Property Name="HoursWorked" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="AnalysisId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="SampleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Analysis" Relationship="IHModel.FK__SampleRes__Analy__0D7A0286" FromRole="SampleResult" ToRole="Analysis" />
+          <NavigationProperty Name="Employee" Relationship="IHModel.FK__SampleRes__Emplo__0E6E26BF" FromRole="SampleResult" ToRole="Employee" />
+          <NavigationProperty Name="Sample1" Relationship="IHModel.FK__SampleRes__Sampl__10566F31" FromRole="SampleResult" ToRole="Sample" />
+        </EntityType>
+        <Association Name="FK__SampleRes__Analy__0D7A0286">
+          <End Type="IHModel.Analysis" Role="Analysis" Multiplicity="1" />
+          <End Type="IHModel.SampleResult" Role="SampleResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analysis">
+              <PropertyRef Name="AnalysisId" />
+            </Principal>
+            <Dependent Role="SampleResult">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SampleRes__Emplo__0E6E26BF">
+          <End Type="IHModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="IHModel.SampleResult" Role="SampleResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="SampleResult">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SampleRes__Sampl__10566F31">
+          <End Type="IHModel.Sample" Role="Sample" Multiplicity="1" />
+          <End Type="IHModel.SampleResult" Role="SampleResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sample">
+              <PropertyRef Name="SampleId" />
+            </Principal>
+            <Dependent Role="SampleResult">
+              <PropertyRef Name="SampleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IHModelStoreContainer" CdmEntityContainer="IHEntities">
+          <EntitySetMapping Name="Analyses">
+            <EntityTypeMapping TypeName="IHModel.Analysis">
+              <MappingFragment StoreEntitySet="Analysis">
+                <ScalarProperty Name="RELST" ColumnName="RELST" />
+                <ScalarProperty Name="RELC" ColumnName="RELC" />
+                <ScalarProperty Name="TLVST" ColumnName="TLVST" />
+                <ScalarProperty Name="TLVC" ColumnName="TLVC" />
+                <ScalarProperty Name="TLV" ColumnName="TLV" />
+                <ScalarProperty Name="REL" ColumnName="REL" />
+                <ScalarProperty Name="ActionLevel" ColumnName="ActionLevel" />
+                <ScalarProperty Name="CeilingLimit" ColumnName="CeilingLimit" />
+                <ScalarProperty Name="STEL" ColumnName="STEL" />
+                <ScalarProperty Name="PEL" ColumnName="PEL" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="AirContaminant" ColumnName="AirContaminant" />
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="IHModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabReports">
+            <EntityTypeMapping TypeName="IHModel.LabReport">
+              <MappingFragment StoreEntitySet="LabReport">
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+                <ScalarProperty Name="sampleId" ColumnName="sampleId" />
+                <ScalarProperty Name="ReportAttachment" ColumnName="ReportAttachment" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="ReportNumber" ColumnName="ReportNumber" />
+                <ScalarProperty Name="LabReportId" ColumnName="LabReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MineTasks">
+            <EntityTypeMapping TypeName="IHModel.MineTask">
+              <MappingFragment StoreEntitySet="MineTask">
+                <ScalarProperty Name="MedicalMonitoring" ColumnName="MedicalMonitoring" />
+                <ScalarProperty Name="Respirator" ColumnName="Respirator" />
+                <ScalarProperty Name="taskDescription" ColumnName="taskDescription" />
+                <ScalarProperty Name="taskId" ColumnName="taskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weathers">
+            <EntityTypeMapping TypeName="IHModel.Weather">
+              <MappingFragment StoreEntitySet="Weather">
+                <ScalarProperty Name="WeatherType" ColumnName="WeatherType" />
+                <ScalarProperty Name="Precipitation" ColumnName="Precipitation" />
+                <ScalarProperty Name="Humidity" ColumnName="Humidity" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="WindDirection" ColumnName="WindDirection" />
+                <ScalarProperty Name="Wind" ColumnName="Wind" />
+                <ScalarProperty Name="WeatherDate" ColumnName="WeatherDate" />
+                <ScalarProperty Name="WeatherId" ColumnName="WeatherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Samples">
+            <EntityTypeMapping TypeName="IHModel.Sample">
+              <MappingFragment StoreEntitySet="Sample">
+                <ScalarProperty Name="taskId" ColumnName="taskId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="NotificationLetter" ColumnName="NotificationLetter" />
+                <ScalarProperty Name="FieldSampleId" ColumnName="FieldSampleId" />
+                <ScalarProperty Name="FieldNotes" ColumnName="FieldNotes" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LPM" ColumnName="LPM" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SampleId" ColumnName="SampleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="addAnalysis">
+            <EntityTypeMapping TypeName="IHModel.addAnalysi">
+              <MappingFragment StoreEntitySet="addAnalysis">
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+                <ScalarProperty Name="SampleId" ColumnName="SampleId" />
+                <ScalarProperty Name="addAnalysisId" ColumnName="addAnalysisId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SampleResults">
+            <EntityTypeMapping TypeName="IHModel.SampleResult">
+              <MappingFragment StoreEntitySet="SampleResults">
+                <ScalarProperty Name="SampleId" ColumnName="SampleId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+                <ScalarProperty Name="HoursWorked" ColumnName="HoursWorked" />
+                <ScalarProperty Name="BriefAndScala" ColumnName="BriefAndScala" />
+                <ScalarProperty Name="EmployeeTWA" ColumnName="EmployeeTWA" />
+                <ScalarProperty Name="SampleWithAir" ColumnName="SampleWithAir" />
+                <ScalarProperty Name="Sample" ColumnName="Sample" />
+                <ScalarProperty Name="SampleResults" ColumnName="SampleResults" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
